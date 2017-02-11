@@ -4,7 +4,7 @@ export default function routes($urlRouterProvider: angular.ui.IUrlRouterProvider
                                $stateProvider: angular.ui.IStateProvider,
                                $compileProvider: angular.ICompileProvider) {
 
-    $compileProvider.preAssignBindingsEnabled(true);
+    // $compileProvider.preAssignBindingsEnabled(true);
                     
     $urlRouterProvider.otherwise('/');
 
@@ -14,12 +14,16 @@ export default function routes($urlRouterProvider: angular.ui.IUrlRouterProvider
             templateUrl: 'home.html',
         })
 
-        .state('list', {
-            url: '/list',
-            template: '<post-list-component></post-list-component>',
+        .state('blog', {
+            url: '/blog',
+            template: '<main-component></main-component>',
         })
-        .state('add', {
+        .state('blog.list', {
+            url: '/list',
+            template: '<post-list-component posts="$ctrl.posts"></post-list-component>',
+        })
+        .state('blog.add', {
             url: '/add',
-            template: '<add-post-component></add-post-component>',
+            template: '<add-post-component add="$ctrl.add(post)"></add-post-component>',
         })
 }

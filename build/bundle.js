@@ -72,6 +72,26 @@
 
 "use strict";
 
+var AddPostController = (function () {
+    function AddPostController(testService) {
+        this.testService = testService;
+    }
+    AddPostController.prototype.addToList = function () {
+        console.log(this);
+    };
+    return AddPostController;
+}());
+AddPostController.inject = ['testService'];
+exports.__esModule = true;
+exports["default"] = AddPostController;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var MainCtrl = (function () {
     function MainCtrl(testService) {
         this.testService = testService;
@@ -87,26 +107,6 @@ var MainCtrl = (function () {
 MainCtrl.inject = ['testCtrl'];
 exports.__esModule = true;
 exports["default"] = MainCtrl;
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var AddPostController = (function () {
-    function AddPostController(testService) {
-        this.testService = testService;
-    }
-    AddPostController.prototype.addToList = function () {
-        console.log(this);
-    };
-    return AddPostController;
-}());
-AddPostController.inject = ['testService'];
-exports.__esModule = true;
-exports["default"] = AddPostController;
 
 
 /***/ }),
@@ -4831,7 +4831,7 @@ module.exports = angular;
 
 "use strict";
 
-var addPost_controller_1 = __webpack_require__(1);
+var addPost_controller_1 = __webpack_require__(0);
 var AddPostComponent = (function () {
     function AddPostComponent() {
         this.controller = addPost_controller_1["default"];
@@ -4852,7 +4852,7 @@ exports["default"] = AddPostComponent;
 
 "use strict";
 
-var app_controller_1 = __webpack_require__(0);
+var app_controller_1 = __webpack_require__(1);
 var mainComponent = (function () {
     function mainComponent() {
         this.controller = app_controller_1["default"];
@@ -4895,20 +4895,23 @@ exports["default"] = PostListComponent;
 "use strict";
 
 function routes($urlRouterProvider, $stateProvider, $compileProvider) {
-    $compileProvider.preAssignBindingsEnabled(true);
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
         url: '/',
         templateUrl: 'home.html'
     })
-        .state('list', {
-        url: '/list',
-        template: '<post-list-component></post-list-component>'
+        .state('blog', {
+        url: '/blog',
+        template: '<main-component></main-component>'
     })
-        .state('add', {
+        .state('blog.list', {
+        url: '/list',
+        template: '<post-list-component posts="$ctrl.posts"></post-list-component>'
+    })
+        .state('blog.add', {
         url: '/add',
-        template: '<add-post-component></add-post-component>'
+        template: '<add-post-component add="$ctrl.add(post)"></add-post-component>'
     });
 }
 exports.__esModule = true;
@@ -38083,10 +38086,10 @@ var angular = __webpack_require__(4);
 var app = angular.module('testApp', [
     __webpack_require__(3)
 ]);
-var app_controller_1 = __webpack_require__(0);
+var app_controller_1 = __webpack_require__(1);
 var postList_controller_1 = __webpack_require__(2);
 var postList_component_1 = __webpack_require__(7);
-var addPost_controller_1 = __webpack_require__(1);
+var addPost_controller_1 = __webpack_require__(0);
 var addPost_component_1 = __webpack_require__(5);
 var app_component_1 = __webpack_require__(6);
 var test_service_1 = __webpack_require__(9);
