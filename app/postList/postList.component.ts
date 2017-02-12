@@ -4,7 +4,8 @@ export default class PostListComponent {
     controller: any = PostListController;
     templateUrl: string = './app/postList/postList.template.html'
     bindings: any = {
-        posts: '='
+        posts: '=',
+        remoteposts: '='
     }
     
     constructor() {

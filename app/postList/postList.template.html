@@ -4,3 +4,7 @@
     <h4>Title: {{post.title}}</h4>
     <p>Body: {{post.body}}</p>
 </div>
+<div ng-repeat="post in $ctrl.remoteposts track by $index">
+    <h4>Title: {{post.title}}</h4>
+    <p>Body: {{post.body}}</p>
+</div>

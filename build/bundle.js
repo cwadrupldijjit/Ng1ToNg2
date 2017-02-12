@@ -94,10 +94,11 @@ exports["default"] = AddPostController;
 
 var MainCtrl = (function () {
     function MainCtrl(testService) {
+        var _this = this;
         this.testService = testService;
         this.posts = [];
         this.something = "hello";
-        testService.getPosts().then(function (res) { return console.log(res); });
+        testService.getPosts().then(function (res) { return _this.remotePosts = res.data; });
     }
     MainCtrl.prototype.add = function (post) {
         this.posts.push(post);
@@ -4879,7 +4880,8 @@ var PostListComponent = (function () {
         this.controller = postList_controller_1["default"];
         this.templateUrl = './app/postList/postList.template.html';
         this.bindings = {
-            posts: '='
+            posts: '=',
+            remoteposts: '='
         };
     }
     return PostListComponent;
@@ -4907,7 +4909,7 @@ function routes($urlRouterProvider, $stateProvider, $compileProvider) {
     })
         .state('blog.list', {
         url: '/list',
-        template: '<post-list-component posts="$ctrl.posts"></post-list-component>'
+        template: '<post-list-component posts="$ctrl.posts" remoteposts="$ctrl.remotePosts"></post-list-component>'
     })
         .state('blog.add', {
         url: '/add',

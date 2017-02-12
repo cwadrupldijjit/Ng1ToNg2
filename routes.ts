@@ -20,7 +20,7 @@ export default function routes($urlRouterProvider: angular.ui.IUrlRouterProvider
         })
         .state('blog.list', {
             url: '/list',
-            template: '<post-list-component posts="$ctrl.posts"></post-list-component>',
+            template: '<post-list-component posts="$ctrl.posts" remoteposts="$ctrl.remotePosts"></post-list-component>',
         })
         .state('blog.add', {
             url: '/add',
