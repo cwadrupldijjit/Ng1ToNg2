@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html ng-app="testApp">
-    <head>
-        <title>Sample project</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css"/>
-    </head>
-    <body>
-        <ui-view></ui-view>
-        <script src="build/bundle.js" charset="utf-8"></script>
-    </body>
+<html>
+
+<head>
+    <title>Sample project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css" />
+</head>
+
+<body>
+    <h1>hello</h1>
+    <ui-view></ui-view>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('bundle.js').catch(function (err) {
+            console.error(err);
+        });
+    </script>
+    <script src="build/bundle.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        angular.bootstrap(document.body, ['testApp']);
+    </script>
+</body>
+
 </html>

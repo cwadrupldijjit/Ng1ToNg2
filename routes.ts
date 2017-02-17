@@ -1,11 +1,12 @@
 import mainCtrl from './app/app.controller';
 
-export default function routes($urlRouterProvider: angular.ui.IUrlRouterProvider, 
-                               $stateProvider: angular.ui.IStateProvider,
-                               $compileProvider: angular.ICompileProvider) {
+export default function routes(
+    $urlRouterProvider: angular.ui.IUrlRouterProvider,
+    $stateProvider: angular.ui.IStateProvider,
+    $compileProvider: angular.ICompileProvider) {
 
     // $compileProvider.preAssignBindingsEnabled(true);
-                    
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider

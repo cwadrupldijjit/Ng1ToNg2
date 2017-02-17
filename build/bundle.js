@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4822,7 +4822,7 @@ angular.module('ui.router.state')
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(10);
+__webpack_require__(9);
 module.exports = angular;
 
 
@@ -4896,36 +4896,6 @@ exports["default"] = PostListComponent;
 
 "use strict";
 
-function routes($urlRouterProvider, $stateProvider, $compileProvider) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-        .state('home', {
-        url: '/',
-        templateUrl: 'home.html'
-    })
-        .state('blog', {
-        url: '/blog',
-        template: '<main-component></main-component>'
-    })
-        .state('blog.list', {
-        url: '/list',
-        template: '<post-list-component posts="$ctrl.posts" remoteposts="$ctrl.remotePosts"></post-list-component>'
-    })
-        .state('blog.add', {
-        url: '/add',
-        template: '<add-post-component add="$ctrl.add(post)"></add-post-component>'
-    });
-}
-exports.__esModule = true;
-exports["default"] = routes;
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 var testService = (function () {
     function testService($http) {
         this.$http = $http;
@@ -4940,7 +4910,7 @@ exports.testService = testService;
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /**
@@ -38079,7 +38049,7 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38094,9 +38064,7 @@ var postList_component_1 = __webpack_require__(7);
 var addPost_controller_1 = __webpack_require__(0);
 var addPost_component_1 = __webpack_require__(5);
 var app_component_1 = __webpack_require__(6);
-var test_service_1 = __webpack_require__(9);
-var routes_1 = __webpack_require__(8);
-app.config(routes_1["default"]);
+var test_service_1 = __webpack_require__(8);
 app.controller('mainCtrl', app_controller_1["default"]);
 app.controller('PostListController', postList_controller_1["default"]);
 app.controller('AddPostController', addPost_controller_1["default"]);
@@ -38104,6 +38072,26 @@ app.component('postListComponent', new postList_component_1["default"]);
 app.component('addPostComponent', new addPost_component_1["default"]);
 app.component('mainComponent', new app_component_1["default"]());
 app.service('testService', test_service_1.testService);
+app.config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state('home', {
+            url: '/',
+            templateUrl: 'home.html'
+        })
+            .state('blog', {
+            url: '/blog',
+            template: '<main-component></main-component>'
+        })
+            .state('blog.list', {
+            url: '/list',
+            template: '<post-list-component posts="$ctrl.posts" remoteposts="$ctrl.remotePosts"></post-list-component>'
+        })
+            .state('blog.add', {
+            url: '/add',
+            template: '<add-post-component add="$ctrl.add(post)"></add-post-component>'
+        });
+    }]);
 
 
 /***/ })

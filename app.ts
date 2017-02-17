@@ -13,8 +13,6 @@ import mainComponent from './app/app.component';
 import {testService} from './test.service';
 import routes from './routes';
 
-app.config(routes);
-
 app.controller('mainCtrl', mainCtrl);
 app.controller('PostListController', PostListController);
 app.controller('AddPostController', AddPostController);
@@ -24,3 +22,32 @@ app.component('addPostComponent', new AddPostComponent);
 app.component('mainComponent', new mainComponent());
 
 app.service('testService', testService);
+
+app.config(['$urlRouterProvider', '$stateProvider', function(
+    $urlRouterProvider: angular.ui.IUrlRouterProvider,
+    $stateProvider: angular.ui.IStateProvider) {
+    // $compileProvider: angular.ICompileProvider
+
+    // $compileProvider.preAssignBindingsEnabled(true);
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+        .state('home', {
+            url: '/',
+            templateUrl: 'home.html',
+        })
+
+        .state('blog', {
+            url: '/blog',
+            template: '<main-component></main-component>',
+        })
+        .state('blog.list', {
+            url: '/list',
+            template: '<post-list-component posts="$ctrl.posts" remoteposts="$ctrl.remotePosts"></post-list-component>',
+        })
+        .state('blog.add', {
+            url: '/add',
+            template: '<add-post-component add="$ctrl.add(post)"></add-post-component>',
+        })
+}]);
