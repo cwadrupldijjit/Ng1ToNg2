@@ -12,10 +12,15 @@ import AddPostComponent from './app/addPost/addPost.component';
 import mainComponent from './app/app.component';
 import {testService} from './test.service';
 import routes from './routes';
+import { downgradeComponent } from '@angular/upgrade/static';
+
+import {TheTestComponent} from './app/thetest/thetest.component'
 
 app.controller('mainCtrl', mainCtrl);
 app.controller('PostListController', PostListController);
 app.controller('AddPostController', AddPostController);
+
+app.directive('trythis', downgradeComponent({component: TheTestComponent}) as angular.IDirectiveFactory);
 
 app.component('postListComponent', new PostListComponent);
 app.component('addPostComponent', new AddPostComponent);
