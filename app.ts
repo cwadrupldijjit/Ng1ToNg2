@@ -20,7 +20,9 @@ app.controller('mainCtrl', mainCtrl);
 app.controller('PostListController', PostListController);
 app.controller('AddPostController', AddPostController);
 
-app.directive('trythis', downgradeComponent({component: TheTestComponent}) as angular.IDirectiveFactory);
+let downgradedComponent = downgradeComponent({component: TheTestComponent}) as angular.IDirectiveFactory;
+console.log(downgradedComponent());
+app.directive('trythis', downgradedComponent);
 
 app.component('postListComponent', new PostListComponent);
 app.component('addPostComponent', new AddPostComponent);

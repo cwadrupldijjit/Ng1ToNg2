@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule,
+         ComponentFactoryResolver } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { TheTestComponent } from './thetest/thetest.component';
@@ -13,6 +14,9 @@ import { TheTestComponent } from './thetest/thetest.component';
   ],
   entryComponents: [
     TheTestComponent
+  ],
+  providers: [
+    
   ]
 })
 export class AppModule {
